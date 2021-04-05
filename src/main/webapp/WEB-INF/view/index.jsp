@@ -49,6 +49,7 @@
                             <th>Пользователь</th>
                             <th>Описание</th>
                             <th>Адрес</th>
+                            <th>Тип</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -59,6 +60,7 @@
                                 <td>${item.value.name}</td>
                                 <td>${item.value.text}</td>
                                 <td>${item.value.address}</td>
+                                <td>${item.value.type.id}</td>
                                 <td><a class="btn" href="<c:url value='/update?key=${item.key}'/>">Изменить</a></td>
                             </tr>
                         </c:forEach>

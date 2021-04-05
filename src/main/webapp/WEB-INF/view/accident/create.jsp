@@ -27,7 +27,7 @@
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                Авторизация
+                Создание
             </div>
             <div class="card-body">
                 <form action="<c:url value='/save'/>" method='POST'>
@@ -42,6 +42,14 @@
                     <div class="form-group">
                         <label>Адрес</label>
                         <input type="text" class="form-control" name="address">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="type" class="form-label">Тип инцидента: </label>
+                        <select class="form-select" id="type" name="type.id">
+                            <c:forEach var="type" items="${types}" >
+                                <option value="${type.id}">${type.name}</option>
+                            </c:forEach>
+                        </select>
                     </div>
                     <br>
                     <input name="submit" type="submit" value="Сохранить" />

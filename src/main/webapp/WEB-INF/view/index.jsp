@@ -50,6 +50,7 @@
                             <th>Описание</th>
                             <th>Адрес</th>
                             <th>Тип</th>
+                            <th>Статьи</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -61,6 +62,13 @@
                                 <td>${item.value.text}</td>
                                 <td>${item.value.address}</td>
                                 <td>${item.value.type.id}</td>
+                                <td>
+                                    <ul class="list-group">
+                                        <c:forEach items="${item.value.rules}" var="rule">
+                                            <li class="list-group-item" id="${rule.id}">${rule.name}</li>
+                                        </c:forEach>
+                                    </ul>
+                                </td>
                                 <td><a class="btn" href="<c:url value='/update?key=${item.key}'/>">Изменить</a></td>
                             </tr>
                         </c:forEach>

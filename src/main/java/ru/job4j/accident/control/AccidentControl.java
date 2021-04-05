@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.repository.AccidentMem;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class AccidentControl {
@@ -19,25 +20,35 @@ public class AccidentControl {
 
     @GetMapping("/create")
     public String create(Model model) {
+        model.addAttribute("rules", accidents.getRules());
         model.addAttribute("types", accidents.getTypes());
         return "accident/create";
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute Accident accident) {
+    public String save(@ModelAttribute Accident accident, HttpServletRequest req) {
+        String[] ids = req.getParameterValues("rIds");
+        for (int i = 0; i < ids.length; i++) {
+            accident.addRule(accidents.getRuleById(Integer.parseInt(ids[i])));
+        }
         accidents.create(accident);
         return "redirect:/";
     }
 
     @GetMapping("/update")
     public String update(@RequestParam int key, Model model) {
+        model.addAttribute("rules", accidents.getRules());
         model.addAttribute("types", accidents.getTypes());
         model.addAttribute("accident", accidents.findById(key));
         return "accident/edit";
     }
 
     @PostMapping("/update")
-    public String update(@ModelAttribute Accident accident) {
+    public String update(@ModelAttribute Accident accident, HttpServletRequest req) {
+        String[] ids = req.getParameterValues("rIds");
+        for (int i = 0; i < ids.length; i++) {
+            accident.addRule(accidents.getRuleById(Integer.parseInt(ids[i])));
+        }
         accidents.update(accident);
         return "redirect:/";
     }

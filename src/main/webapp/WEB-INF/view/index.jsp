@@ -38,17 +38,17 @@
                         <tr>
                             <th>ID</th>
                             <th>Пользователь</th>
-                            <th>Дата создания</th>
-                            <th>Готово</th>
+                            <th>Описание</th>
+                            <th>Адрес</th>
                         </tr>
                         </thead>
                         <tbody>
                         <c:forEach items="${list}" var="item">
                             <tr>
-                                <td>${item}</td>
-                                <td>${item}</td>
-                                <td>${item}</td>
-                                <td>${item}</td>
+                                <td>${item.key}</td>
+                                <td>${item.value.name}</td>
+                                <td>${item.value.text}</td>
+                                <td>${item.value.address}</td>
                             </tr>
                         </c:forEach>
                         </tbody>

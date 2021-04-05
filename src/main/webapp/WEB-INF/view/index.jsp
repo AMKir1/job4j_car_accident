@@ -27,6 +27,15 @@
 
 <div class="container pt-3">
     <div class="content">
+
+        <div class="row">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a href="<c:url value='/create'/>">Добавить инцидент</a>
+                </li>
+            </ul>
+        </div>
+        <br>
         <div class="row">
             <div class="card" style="width: 100%">
                 <div class="card-header">
@@ -40,6 +49,7 @@
                             <th>Пользователь</th>
                             <th>Описание</th>
                             <th>Адрес</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -49,6 +59,7 @@
                                 <td>${item.value.name}</td>
                                 <td>${item.value.text}</td>
                                 <td>${item.value.address}</td>
+                                <td><a class="btn" href="<c:url value='/update?key=${item.key}'/>">Изменить</a></td>
                             </tr>
                         </c:forEach>
                         </tbody>

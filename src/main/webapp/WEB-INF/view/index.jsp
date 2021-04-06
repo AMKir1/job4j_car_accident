@@ -55,21 +55,25 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${list}" var="item">
+                        <c:forEach items="${accidents}" var="item">
                             <tr>
-                                <td>${item.key}</td>
-                                <td>${item.value.name}</td>
-                                <td>${item.value.text}</td>
-                                <td>${item.value.address}</td>
-                                <td>${item.value.type.id}</td>
-                                <td>
-                                    <ul class="list-group">
-                                        <c:forEach items="${item.value.rules}" var="rule">
-                                            <li class="list-group-item" id="${rule.id}">${rule.name}</li>
-                                        </c:forEach>
-                                    </ul>
-                                </td>
-                                <td><a class="btn" href="<c:url value='/update?key=${item.key}'/>">Изменить</a></td>
+                                <td>${item.id}</td>
+                                <td>${item.name}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+<%--                                <td>${item.value.text}</td>--%>
+<%--                                <td>${item.value.address}</td>--%>
+<%--                                <td>${item.value.type.id}</td>--%>
+<%--                                <td>--%>
+<%--                                    <ul class="list-group">--%>
+<%--                                        <c:forEach items="${item.value.rules}" var="rule">--%>
+<%--                                            <li class="list-group-item" id="${rule.id}">${rule.name}</li>--%>
+<%--                                        </c:forEach>--%>
+<%--                                    </ul>--%>
+<%--                                </td>--%>
+                                <td><a class="btn" href="<c:url value='/update?key=${item.id}'/>">Изменить</a></td>
                             </tr>
                         </c:forEach>
                         </tbody>

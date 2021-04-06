@@ -45,10 +45,10 @@
                         <tbody>
                         <c:forEach items="${list}" var="item">
                             <tr>
-                                <td>${item.key}</td>
-                                <td>${item.value.name}</td>
-                                <td>${item.value.text}</td>
-                                <td>${item.value.address}</td>
+                                <td>${item.id}</td>
+                                <td>${item.name}</td>
+                                <td>${item.text}</td>
+                                <td>${item.address}</td>
                             </tr>
                         </c:forEach>
                         </tbody>

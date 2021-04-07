@@ -10,7 +10,7 @@ import ru.job4j.accident.repository.AccidentMem;
 public class IndexControl {
 
     @Autowired
-    AccidentMem accidentMem;
+    private AccidentMem accidentMem;
 
     @GetMapping("/")
     public String index(Model model) {

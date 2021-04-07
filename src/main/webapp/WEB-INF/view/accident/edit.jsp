@@ -30,22 +30,21 @@
                 Авторизация
             </div>
             <div class="card-body">
-                <form action="<c:url value='/update'/>" method='POST'>
+                <form action="<c:url value='/save'/>" method='POST'>
                     <div class="form-group">
-
                         <input type="text" class="form-control" name="id" value="${accident.id}" hidden>
                     </div>
                     <div class="form-group">
                         <label>Имя</label>
-                        <input type="text" class="form-control" name="name" value="${accident.name}" placeholder="${accident.name}">
+                        <input type="text" class="form-control" name="name" value="${accident.name}">
                     </div>
                     <div class="form-group">
                         <label>Описание</label>
-                        <input type="text" class="form-control" name="text" value="${accident.text}" placeholder="${accident.text}">
+                        <input type="text" class="form-control" name="text" value="${accident.text}">
                     </div>
                     <div class="form-group">
                         <label>Адрес</label>
-                        <input type="text" class="form-control" name="address" value="${accident.address}" placeholder="${accident.address}">
+                        <input type="text" class="form-control" name="address" value="${accident.address}">
                     </div>
                     <br>
                     <input name="submit" type="submit" value="Сохранить" />

@@ -32,10 +32,6 @@ public class AccidentMem {
         this.accidents.put(accident.getId(), accident);
     }
 
-    public void update(Accident accident) {
-        this.accidents.replace(accident.getId(), accident);
-    }
-
     public Accident findById(int id) {
         return this.accidents.get(id);
     }

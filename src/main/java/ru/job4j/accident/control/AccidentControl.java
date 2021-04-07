@@ -33,10 +33,4 @@ public class AccidentControl {
         model.addAttribute("accident", accidents.findById(key));
         return "accident/edit";
     }
-
-    @PostMapping("/update")
-    public String update(@ModelAttribute Accident accident) {
-        accidents.update(accident);
-        return "redirect:/";
-    }
 }

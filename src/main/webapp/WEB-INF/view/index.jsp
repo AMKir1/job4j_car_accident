@@ -55,24 +55,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${accidents}" var="item">
+                        <c:forEach items="${list}" var="item">
                             <tr>
                                 <td>${item.id}</td>
                                 <td>${item.name}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-<%--                                <td>${item.value.text}</td>--%>
-<%--                                <td>${item.value.address}</td>--%>
-<%--                                <td>${item.value.type.id}</td>--%>
-<%--                                <td>--%>
-<%--                                    <ul class="list-group">--%>
-<%--                                        <c:forEach items="${item.value.rules}" var="rule">--%>
-<%--                                            <li class="list-group-item" id="${rule.id}">${rule.name}</li>--%>
-<%--                                        </c:forEach>--%>
-<%--                                    </ul>--%>
-<%--                                </td>--%>
+                                <td>${item.text}</td>
+                                <td>${item.address}</td>
+                                <td>${item.type.id}</td>
                                 <td><a class="btn" href="<c:url value='/update?key=${item.id}'/>">Изменить</a></td>
                             </tr>
                         </c:forEach>

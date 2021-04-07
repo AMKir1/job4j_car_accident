@@ -22,6 +22,8 @@ public class Accident {
     @OneToMany(mappedBy = "rule")
     private Set<Rule> rules = new HashSet<>();
 
+    private AccidentType type;
+
     public Accident() {
     }
 
@@ -34,13 +36,13 @@ public class Accident {
         this.rules = rules;
     }
 
-    public static Accident of(int id, String name, String text, String address, AccidentType accidentType) {
+    public static Accident of(int id, String name, String text, String address, AccidentType type) {
         Accident accident = new Accident();
         accident.setId(id);
         accident.setName(name);
         accident.setText(text);
         accident.setAddress(address);
-        accident.setType(accidentType);
+        accident.setType(type);
         return accident;
     }
 

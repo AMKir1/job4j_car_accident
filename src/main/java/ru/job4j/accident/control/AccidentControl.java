@@ -7,8 +7,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.job4j.accident.model.Accident;
+import ru.job4j.accident.model.AccidentType;
 import ru.job4j.accident.repository.AccidentMem;
 import javax.servlet.http.HttpServletRequest;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class AccidentControl {
@@ -20,8 +24,11 @@ public class AccidentControl {
 
     @GetMapping("/create")
     public String create(Model model) {
-        model.addAttribute("rules", accidents.getRules());
-        model.addAttribute("types", accidents.getTypes());
+        List<AccidentType> types = new ArrayList<>();
+        types.add(AccidentType.of(1, "Две машины"));
+        types.add(AccidentType.of(2, "Машина и человек"));
+        types.add(AccidentType.of(3, "Машина и велосипед"));
+        model.addAttribute("types", types);
         return "accident/create";
     }
 
@@ -31,25 +38,17 @@ public class AccidentControl {
         for (int i = 0; i < ids.length; i++) {
             accident.addRule(accidents.getRuleById(Integer.parseInt(ids[i])));
         }
-        accidents.create(accident);
-        return "redirect:/";
+        accidents.addAccidents(accident);
     }
 
     @GetMapping("/update")
     public String update(@RequestParam int key, Model model) {
-        model.addAttribute("rules", accidents.getRules());
-        model.addAttribute("types", accidents.getTypes());
+        List<AccidentType> types = new ArrayList<>();
+        types.add(AccidentType.of(1, "Две машины"));
+        types.add(AccidentType.of(2, "Машина и человек"));
+        types.add(AccidentType.of(3, "Машина и велосипед"));
+        model.addAttribute("types", types);
         model.addAttribute("accident", accidents.findById(key));
         return "accident/edit";
-    }
-
-    @PostMapping("/update")
-    public String update(@ModelAttribute Accident accident, HttpServletRequest req) {
-        String[] ids = req.getParameterValues("rIds");
-        for (int i = 0; i < ids.length; i++) {
-            accident.addRule(accidents.getRuleById(Integer.parseInt(ids[i])));
-        }
-        accidents.update(accident);
-        return "redirect:/";
     }
 }

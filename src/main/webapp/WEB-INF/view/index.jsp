@@ -59,7 +59,7 @@
                                 <td>${item.name}</td>
                                 <td>${item.text}</td>
                                 <td>${item.address}</td>
-                                <td><a class="btn" href="<c:url value='/update?key=${item.key}'/>">Изменить</a></td>
+                                <td><a class="btn" href="<c:url value='/update?key=${item.id}'/>">Изменить</a></td>
                             </tr>
                         </c:forEach>
                         </tbody>

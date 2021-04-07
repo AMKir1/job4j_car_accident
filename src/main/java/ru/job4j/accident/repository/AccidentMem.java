@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class AccidentMem {
 
     private final Map<Integer, Accident> accidents = new ConcurrentHashMap<>();
-    private static final AtomicInteger ID = new AtomicInteger(5);
+    private static final AtomicInteger ID = new AtomicInteger(4);
 
     public AccidentMem() {
         addAccidents(Accident.of(1, "Артем", "Велосипедист упал с велосипеда на газон", "г.Москва ул.Кутузовская 15"));

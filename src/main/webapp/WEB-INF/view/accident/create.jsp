@@ -46,16 +46,16 @@
                     <div class="form-group mb-3">
                         <label for="type" class="form-label">Тип инцидента: </label>
                         <select class="form-select" id="type" name="type.id">
-                            <c:forEach var="type" items="${types}" >
-                                <option value="${type.id}">${type.name}</option>
+                            <c:forEach var="type" items="${types}">
+                                    <option value="${type.id}">${type.name}</option>
                             </c:forEach>
                         </select>
                     </div>
                     <div class="form-group mb-3">
                         <label for="rIds" class="form-label">Статьи: </label>
                         <select class="form-select" id="rIds" name="rIds" multiple>
-                            <c:forEach var="rule" items="${rules}" >
-                                <option value="${rule.id}">${rule.name}</option>
+                            <c:forEach var="r" items="${rules}">
+                                <option value="${r.id}">${r.name}</option>
                             </c:forEach>
                         </select>
                     </div>

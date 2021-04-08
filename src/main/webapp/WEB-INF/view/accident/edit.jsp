@@ -30,7 +30,7 @@
                 Изменение
             </div>
             <div class="card-body">
-                <form action="<c:url value='/save'/>" method='POST'>
+                <form action="<c:url value='/save?key=${accident.id}'/>" method='POST'>
                     <div class="form-group">
                         <input type="text" class="form-control" name="id" value="${accident.id}" hidden>
                     </div>
@@ -39,42 +39,41 @@
                         <input type="text" class="form-control" name="name" value="${accident.name}">
                     </div>
                     <div class="form-group">
-                        <label>Описание</label>
+                        <label>Описание:</label>
                         <input type="text" class="form-control" name="text" value="${accident.text}">
                     </div>
                     <div class="form-group">
-                        <label>Адрес</label>
+                        <label>Адрес:</label>
                         <input type="text" class="form-control" name="address" value="${accident.address}">
                     </div>
                     <div class="form-group mb-3">
                         <label for="type" class="form-label">Тип инцидента: </label>
                         <select class="form-select" id="type" name="type.id">
-                            <c:forEach var="type" items="${types}" >
-                                <option value="${type.id}">${type.name}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="type" class="form-label">Тип инцидента: </label>
-                        <select class="form-select" id="type" name="type.id">
-                            <c:forEach var="type" items="${types}" >
-                                <c:if test="${accident.type.id ==  type.id}">
-                                <option value="${type.id}" selected>${type.name}</option>
+                            <c:forEach var="type" items="${types}">
+                                <c:if test="${accident.type.id == type.id}">
+                                    <option value="${type.id}" selected>${type.name}</option>
                                 </c:if>
-                                <option value="${type.id}">${type.name}</option>
+                                <c:if test="${accident.type.id != type.id}">
+                                    <option value="${type.id}">${type.name}</option>
+                                </c:if>
                             </c:forEach>
                         </select>
                     </div>
                     <div class="form-group mb-3">
                         <label for="rIds" class="form-label">Статьи: </label>
                         <select class="form-select" id="rIds" name="rIds" multiple>
-                            <c:forEach var="rule" items="${rules}" >
-                                <option value="${rule.id}">${rule.name}</option>
+                            <c:forEach var="r" items="${rules}">
+                                <c:if test="${accident.rules.contains(r)}">
+                                    <option value="${r.id}" selected>${r.name}</option>
+                                </c:if>
+                                <c:if test="${!accident.rules.contains(r)}">
+                                    <option value="${r.id}">${r.name}</option>
+                                </c:if>
                             </c:forEach>
                         </select>
                     </div>
                     <br>
-                    <input name="submit" type="submit" value="Сохранить" />
+                    <input name="submit" type="submit" value="Сохранить"/>
                 </form>
             </div>
         </div>

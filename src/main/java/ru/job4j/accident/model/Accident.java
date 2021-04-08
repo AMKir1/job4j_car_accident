@@ -1,5 +1,7 @@
 package ru.job4j.accident.model;
 
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
@@ -15,14 +17,13 @@ public class Accident {
     private String name;
     private String text;
     private String address;
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "id_type", foreignKey = @ForeignKey(name = "ID_TYPE_FK"))
     private AccidentType type;
 
-    @OneToMany(mappedBy = "rule")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Rule> rules = new HashSet<>();
-
-    private AccidentType type;
 
     public Accident() {
     }
@@ -102,6 +103,7 @@ public class Accident {
                 ", text='" + text + '\'' +
                 ", address='" + address + '\'' +
                 ", type=" + type +
+                ", rules=" + rules.toString() +
                 '}';
     }
 
@@ -114,11 +116,12 @@ public class Accident {
                 Objects.equals(name, accident.name) &&
                 Objects.equals(text, accident.text) &&
                 Objects.equals(address, accident.address) &&
-                Objects.equals(type, accident.type);
+                Objects.equals(type, accident.type) &&
+                Objects.equals(rules, accident.rules);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, text, address, type);
+        return Objects.hash(id, name, text, address, type, rules);
     }
 }

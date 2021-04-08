@@ -16,8 +16,7 @@ public class RulesJdbcTemplate {
     }
 
     public Rule save(Rule rule) {
-        jdbc.update("insert into rules (name) values (?)",
-                rule.getName());
+        jdbc.update("insert into rules (name) values (?)", rule.getName());
         return rule;
     }
 

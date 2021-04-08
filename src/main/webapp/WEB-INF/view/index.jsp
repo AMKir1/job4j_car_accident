@@ -61,7 +61,14 @@
                                 <td>${item.name}</td>
                                 <td>${item.text}</td>
                                 <td>${item.address}</td>
-                                <td>${item.type.id}</td>
+                                <td>${item.type.name}</td>
+                                <td>
+                                    <ul class="list-group">
+                                        <c:forEach items="${item.rules}" var="rule">
+                                            <li class="list-group-item">${rule.name}</li>
+                                        </c:forEach>
+                                    </ul>
+                                </td>
                                 <td><a class="btn" href="<c:url value='/update?key=${item.id}'/>">Изменить</a></td>
                             </tr>
                         </c:forEach>

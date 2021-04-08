@@ -25,18 +25,15 @@
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                Вход
+                Регистрация
             </div>
             <div class="card-body">
                 <c:if test="${not empty errorMessage}">
-<%--                    <div style="color:#ff0000; font-weight: bold; margin: 30px 0px;">--%>
-<%--                            ${errorMessage}--%>
-<%--                    </div>--%>
                     <div class="alert alert-danger" role="alert">
                             ${errorMessage}
                     </div>
                 </c:if>
-                <form name='login' action="<c:url value='/login'/>" method='POST'>
+                <form name='login' action="<c:url value='/reg'/>" method='POST'>
                     <table>
                         <tr>
                             <td><label>UserName:</label></td>
@@ -52,8 +49,6 @@
                         </tr>
                     </table>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    <br>
-                    <a href="<c:url value='/reg'/>">Регистрация</a>
                 </form>
             </div>
         </div>

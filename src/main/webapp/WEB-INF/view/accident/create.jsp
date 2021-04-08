@@ -23,7 +23,14 @@
 <body>
 
 <div class="container pt-3">
-
+    <div class="row">
+        <ul class="nav">
+            <li class="nav-item">
+                <p>Пользователь : ${user.username}</p>
+            </li>
+        </ul>
+    </div>
+    <br>
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">

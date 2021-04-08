@@ -31,6 +31,10 @@
         <div class="row">
             <ul class="nav">
                 <li class="nav-item">
+                       <p>Пользователь : ${user.username}&nbsp;&nbsp;</p>
+                </li>
+
+                <li class="nav-item">
                     <a href="<c:url value='/create'/>">Добавить инцидент</a>
                 </li>
             </ul>

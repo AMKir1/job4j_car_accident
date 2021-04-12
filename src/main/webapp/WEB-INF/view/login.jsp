@@ -48,7 +48,7 @@
                         </tr>
                         <tr><td><br></td></tr>
                         <tr>
-                            <td colspan='2'><input class="btn btn-secondary" name="submit" type="submit" value="Сохранить"/></td>
+                            <td colspan='2'><input class="btn btn-secondary" name="submit" type="submit" value="Войти"/></td>
                         </tr>
                     </table>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

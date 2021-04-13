@@ -29,16 +29,15 @@ public class RegControl {
 
     @PostMapping("/reg")
     public String save(@ModelAttribute User user, Model model) {
-        if(userService.existByName(user.getUsername())) {
-            model.addAttribute("errorMessage","This user already exists!");
+        if (userService.existByName(user.getUsername())) {
+            model.addAttribute("errorMessage", "This user already exists!");
             return "reg";
-        } else {
-            user.setEnabled(true);
-            user.setPassword(encoder.encode(user.getPassword()));
-            user.setAuthority(authorities.findByAuthority("ROLE_USER"));
-            users.save(user);
-            return "redirect:/login";
         }
+        user.setEnabled(true);
+        user.setPassword(encoder.encode(user.getPassword()));
+        user.setAuthority(authorities.findByAuthority("ROLE_USER"));
+        users.save(user);
+        return "redirect:/login";
     }
 
     @GetMapping("/reg")
